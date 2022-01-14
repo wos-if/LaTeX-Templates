@@ -1,0 +1,162 @@
+\RequirePackage{tikz}
+\RequirePackage{tkz-euclide}
+\usetikzlibrary{calc}
+
+\RequirePackage{babel}
+
+\RequirePackage{amsmath,amssymb,amsthm}
+\RequirePackage{mdframed}
+
+\RequirePackage{newpxtext,newpxmath}
+
+\RequirePackage{fontawesome5}
+\RequirePackage{marvosym}
+\RequirePackage{pifont}
+\RequirePackage{MnSymbol}
+\RequirePackage[skaknew]{skak}
+
+\RequirePackage{etoolbox}
+
+\RequirePackage[letterpaper,top=0.75in,bottom=0.75in,left=0.75in,right=0.75in]{geometry}
+
+
+\setcounter{secnumdepth}{\paragraphnumdepth}% To show the result for all
+\newcommand*{\numberinmargin}[1]{%
+\makebox[0pt][r]{#1\autodot\hskip\marginparsep}}
+
+
+\renewcommand*{\sectionformat}{\numberinmargin{\thesection}}
+\renewcommand*{\subsectionformat}{\numberinmargin{\thesubsection}}
+\renewcommand*{\subsubsectionformat}{\numberinmargin{\thesubsubsection}}
+\renewcommand*{\paragraphformat}{\numberinmargin{\theparagraph}}
+\renewcommand*{\paragraphformat}{\numberinmargin{\theparagraph}}
+
+\usepackage{xcolor}
+\definecolor{dpurple}{RGB}{155, 50, 168} %dark purple
+\definecolor{lpurple}{RGB}{253, 237, 255} %light purple
+\definecolor{dorange}{RGB}{235, 197, 45} %dark orange
+\definecolor{lyellow}{RGB}{255, 255, 227} %yellow
+\definecolor{dneonblue}{RGB}{89, 212, 212} %neon blue
+\definecolor{lmintblue}{RGB}{235, 255, 255} %mint blue
+\definecolor{dblue}{RGB}{45, 80, 235} %dark blue
+\definecolor{lblue}{RGB}{230, 234, 255} %light blue
+\definecolor{dgreen}{RGB}{2, 117, 15} %dark green
+\definecolor{lgreen}{RGB}{227, 255, 230} %light green
+\definecolor{dred}{RGB}{227, 11, 11} %dark red
+\definecolor{lred}{RGB}{255, 237, 237}
+\definecolor{titlegreen}{RGB}{9, 66, 82}
+%blue links
+\RequirePackage[hypertexnames=false]{hyperref}
+\hypersetup{
+colorlinks,
+citecolor=black,
+filecolor=black,
+linkcolor=blue,
+urlcolor=dblue
+}
+
+%TOC MUST STAY BLACK
+
+\newcommand{\toc}{
+{\hypersetup{
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black}
+\tableofcontents}
+}
+%\usepackage{tocloft}
+%\usepackage{fontawesome}
+%\addtolength\cftsecnumwidth{0.7em}
+%\renewcommand\cftsecpresnum{\faDiamond}
+
+%fonts
+\RequirePackage{newpxtext,newpxmath}
+
+\RequirePackage{fontawesome}
+\RequirePackage{marvosym}
+\RequirePackage{pifont}
+
+\RequirePackage[skaknew]{skak}
+
+\DeclareRobustCommand{\cantafont}{\fontfamily{Cantarell-TLF}\selectfont}
+\DeclareRobustCommand{\carlfont}{\fontfamily{Carlito-OsF}\selectfont}
+
+%header
+\RequirePackage{etoolbox} %what is this for again
+
+\patchcmd{\@maketitle}{\@title}{\carlfont\color{titlegreen}\bfseries\@title}{}{}
+\patchcmd{\@maketitle}{\@author}{\carlfont\@author}{}{}
+\patchcmd{\@maketitle}{\@date}{\carlfont\color{titlegreen}{\@date}}{}{}
+
+\newtheoremstyle{importantev*}%                % Name
+{4pt}%                                     % Space above
+{2pt}%                                     % Space below
+{}%                                     % Body font
+{}%                                     % Indent amount
+{\color{dblue}\sffamily\bfseries}%                            % Theorem head font
+{}%                                    % Punctuation after theorem head
+{\newline}%                                    % Space after theorem head, ' ', or \newline
+{\thmname{#1}\thmnote{ (#3)}}%
+
+
+\theoremstyle{importantev*}
+\newmdtheoremenv[% settings
+backgroundcolor=lblue,
+linecolor=dblue,
+linewidth=0.5mm,
+nobreak=true,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+topline=true,
+bottomline=true,
+rightline=false,
+leftline=false]{importantev*}{Important Event}
+
+\newtheoremstyle{testhint*}%                % Name
+{4pt}%                                     % Space above
+{2pt}%                                     % Space below
+{}%                                     % Body font
+{}%                                     % Indent amount
+{\color{dred}\sffamily\bfseries}%                            % Theorem head font
+{}%                                    % Punctuation after theorem head
+{\newline}%                                    % Space after theorem head, ' ', or \newline
+{\thmname{#1}\thmnote{ (#3)}}%
+
+
+\theoremstyle{testhint*}
+\newmdtheoremenv[% settings
+backgroundcolor=lred,
+linecolor=dred,
+linewidth=0.5mm,
+nobreak=true,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+topline=true,
+bottomline=true,
+rightline=false,
+leftline=false]{testhint*}{Test Hint}
+
+\newtheoremstyle{importantperson*}%                % Name
+{4pt}%                                     % Space above
+{2pt}%                                     % Space below
+{}%                                     % Body font
+{}%                                     % Indent amount
+{\color{dgreen}\sffamily\bfseries}%                            % Theorem head font
+{}%                                    % Punctuation after theorem head
+{\newline}%                                    % Space after theorem head, ' ', or \newline
+{\thmname{#1}\thmnote{ (#3)}}%
+
+
+\theoremstyle{importantperson*}
+\newmdtheoremenv[% settings
+backgroundcolor=lgreen,
+linecolor=dgreen,
+linewidth=0.5mm,
+nobreak=true,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+topline=true,
+bottomline=true,
+rightline=false,
+leftline=false]{importantperson*}{Important Person}
